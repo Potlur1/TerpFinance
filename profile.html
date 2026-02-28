@@ -3,14 +3,25 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="background">
-<div id="navigation_bar"> 
+    <h1>-User Profile-</h1>
+    <div class="pfp">
+        <img src="https://www.cs.umd.edu/class/spring2026/cmsc434/P1_2/SmileyFace.png" alt="pfp img" class="pfp-img" onclick="showNotification()">
+    </div>
+    <div id="notif" class="notif">
+        <div class="notif-content">
+            <p>Why'd you Click on the Pfp???</p>
+            <button class="close" onclick="closeNotification()">Close</button>
+        </div>
+    </div>
+    <div id="navigation_bar"> 
         <ul class="menu_bar">
             <li><a href="index.html"><img src="Icon-Images/Text-Icon.png" alt="Text Icon" class="icon"> Text</a></li>
             <li><a href="lr.html"><img src="Icon-Images/LR-Icon.png" alt="LR Icon" class="icon">LR</a></li>
             <li><a href="colors.html"><img src="Icon-Images/Color-Icon.png" alt="Color Icon" class="icon">Color</a></li>
-            <li><a href="profile.html"><img src="Icon-Images/Profile-Icon.png" alt="Profile Icon" class="icon">Color</a></li>
+            <li><a href="profile.html"><img src="Icon-Images/Profile-Icon.png" alt="Profile Icon" class="icon">Profile</a></li>
             <li><a href="choices.html"><img src="Icon-Images/Choices-Icon.png" alt="Choices Icon" class="icon">Choices</a></li>
             <li><a href="todo.html"><img src="Icon-Images/ToDo-Icon.png" alt="To Do Icon" class="icon">To Do</a></li>
         </ul>
     </div>
+    <script src="js/main.js"></script>
 </body>
