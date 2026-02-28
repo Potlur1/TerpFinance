@@ -1,8 +1,40 @@
 <!doctype html>
 <head>
     <link rel="stylesheet" href="css/styles.css">
+    <title>ToDo</title>
+    <style>
+        #todoList li {
+            cursor: pointer;
+            padding: 8px;
+            margin: 4px 0;
+            background-color: lightgray;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+            background-color: darkgray;
+        }
+
+        .deleteBtn {
+            float:right; 
+            cursor: gray;
+            background-color: darkgray;
+        }
+    </style>
 </head>
+
 <body class="background">
+
+<div id="text_area">
+    <h1> To Do List</h1>
+
+    <input type="text" id="newItem" placeholder="New entry"> <br><br><br>
+    <button onclick="addItem()">Add</button>
+
+    <ul id="todoList"></ul>
+</div>
+
 <div id="navigation_bar"> 
         <ul class="menu_bar">
             <li><a href="index.html"><img src="Icon-Images/Text-Icon.png" alt="Text Icon" class="icon"> Text</a></li>
@@ -13,4 +45,34 @@
             <li><a href="todo.html"><img src="Icon-Images/ToDo-Icon.png" alt="To Do Icon" class="icon">To Do</a></li>
         </ul>
     </div>
+
+<script>
+function addItem() {
+    let input = document.getElementById("newItem");
+    let value = input.value.trim();
+
+    if (value === "") return;
+
+    let li = document.createElement("li");
+    li.textContent = value;
+
+    li.onclick = function() {
+        li.classList.toggle("completed");
+    };
+
+    let deleteBtn = document.createElement("span");
+    deleteBtn.textContent = " ✕";
+    deleteBtn.className = "deleteBtn";
+    deleteBtn.onclick = function(e) {
+        e.stopPropagation();
+        li.remove();
+    };
+
+    li.appendChild(deleteBtn);
+    document.getElementById("todoList").appendChild(li);
+
+    input.value = "";
+}
+</script>
+
 </body>

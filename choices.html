@@ -1,8 +1,33 @@
 <!doctype html>
 <head>
     <link rel="stylesheet" href="css/styles.css">
+    <title>Choices</title>
 </head>
 <body class="background">
+
+<div id = "text_area">
+    <h1> Choices Screen </h1>
+
+    <h3> What year are you? </h3>
+    <input type="radio" name="camera1" value="Freshman" checked> Freshman<br>
+    <input type="radio" name="camera1" value="Sophomore"> Sophomore<br>
+    <input type="radio" name="camera1" value="Junior"> Junior<br>
+    <input type="radio" name="camera1" value="Senior"> Senior<br><br>
+
+    <h3>What major are you?</h3>
+    <select id="camera2">
+        <option value="Engineering & Technology">Engineering & Technology</option>
+        <option value="Business & Entrepreneurship">Business & Entrepreneurship</option>
+        <option value="Natural & Physical Sciences">Natural & Physical Sciences</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="printChoice()">Submit Choices</button>
+
+    <p id="result"></p>
+</div>
+
 <div id="navigation_bar"> 
         <ul class="menu_bar">
             <li><a href="index.html"><img src="Icon-Images/Text-Icon.png" alt="Text Icon" class="icon"> Text</a></li>
@@ -13,4 +38,16 @@
             <li><a href="todo.html"><img src="Icon-Images/ToDo-Icon.png" alt="To Do Icon" class="icon">To Do</a></li>
         </ul>
     </div>
+
+<script>
+function printChoice() {
+    let year = document.querySelector('input[name="camera1"]:checked').value;
+    let dropdown = document.getElementById("camera2").value;
+
+    document.getElementById("result").innerHTML =
+        "You are a " + year + " and in " + dropdown + ". Thank you for submitting your year and major!";
+}
+</script>
+
+
 </body>
