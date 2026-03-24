@@ -4,18 +4,68 @@ body {
   text-align: left;
 }
 
-#text_area {
-  height: 90vh;
+.welcome_message {
+  height: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   position: fixed;
-  margin: 0;
+  margin: 50px;
   overflow-x: hidden;
   overflow-y: scroll;
+  font-size: 20pt;
+}
+  
+.remaining_budget_bg {
+  height: 20vh;
+  width: 60vw;
+  flex-direction: column;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 20vw;
+  top: 15vh;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 50px;
+  border: 3px solid black;
+  z-index: 1;
 }
 
-#navigation_bar {
+.remaining_budget {
+  font-size: 75pt;
+  margin: 0;
+  margin-top: 3.75vh;
+}
+
+.remaining_time {
+  font-size: 30pt;
+  margin: 0;
+  margin-top: 1vh;
+}
+
+.total_budget_bg {
+  height: 5vh;
+  width: 40vw;
+  flex-direction: column;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 30vw;
+  top: 35vh;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 0 0 20px 20px;
+  border: 3px solid black;
+}
+
+.total_budget {
+  font-size: 25pt;
+  margin: 0;
+  margin-top: 1vh;
+}
+
+.navigation_bar {
     height: 10vh;
     width: 100vw;
     display: flex;
@@ -48,7 +98,7 @@ ul {
 ul li a {
   display: block;
   color: white;
-  padding: 14px 16px;
+  padding: 14px 40px;
   text-decoration: none;
 }
 
@@ -56,15 +106,18 @@ ul li a:hover {
   background-color: #faf21b;
   color: black;
 }
+
 .background {
   background-color: rgba(39, 121, 165, 0.502);
 }
+
 .icon{
-  width: 40px;
-  height: 42px;
+  width: 100px;
+  height: 100px;
   align-items: center;
   text-align: center;
 }
+
 .menu_bar li a{
   display: flex;
   align-items: center;
