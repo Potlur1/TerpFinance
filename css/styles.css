@@ -1,10 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  height: 100vh;
   margin: 0;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #f7f7f7;
 }
 
 .welcome_message {
@@ -24,13 +26,14 @@ body {
   align-items: center;
   background-color: #ffffff;
   border-radius: 50px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px 0 darkgreen;
   z-index: 1;
 }
 
 .remaining_budget {
   font-size: 75pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: darkgreen;
   margin: 0;
   margin-top: 3.75vh;
 }
@@ -49,17 +52,16 @@ body {
   flex-direction: column;
   display: flex;
   align-items: center;
-  align-items: center;
   background-color: #ffffff;
   border-radius: 0 0 20px 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px 0 darkgreen;
 }
 
 .total_budget {
   font-size: 25pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0;
-  margin-top: 1vh;
+  margin-top: 1.3vh;
 }
 
 .recent_transactions_message {
@@ -71,13 +73,14 @@ body {
 }
 
 .recent_transactions_bg {
-  width: 311px;
+  width: 100vw;
   height: 379px;
   justify-content: center;
   align-items: center;
 }
 
 .recent_transactions_list {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,70 +88,97 @@ body {
   list-style-type: none;
 }
 
-.transaction {
+.transaction_red {
   padding: 1vh;
   font-size: 30pt;  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: red;
+}
+
+.transaction_green {
+  padding: 1vh;
+  font-size: 30pt;  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: darkgreen;
+}
+
+.transaction_full_list {
+  all: unset;
+  padding: 1vh;
+  font-size: 30pt;  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #000000;
+}
+
+.add_transaction_bg {
+  height: 5vh;
+  width: 60vw;
+  left: 20vw;
+  margin-top: 3.5vh;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  background-color: darkgreen;
+  border-radius: 20px;
+}
+
+.add_transaction {
+  font-size: 25pt;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  margin-top: 1vh;
 }
 
 .navigation_bar {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    position: fixed;
-    margin: 0;
-    bottom: 0;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  position: fixed;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 900;
 }
 
 .menu_bar {
-    width: inherit;
-    height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-}
-
-ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  display: flex;
 }
 
-ul li a {
+.menu_bar li {
+  margin: 0;
+  padding: 0;
+}
+
+.menu_bar li a {
   width: 20vw;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: block;
-  color: white;
   text-decoration: none;
   border: 2px black solid;
 }
 
-ul li a:hover {
+.menu_bar li a:hover {
   background-color: #faf21b;
-  color: black;
 }
 
 .background {
   background-color: white;
 }
 
-.icon{
+.icon {
   width: 100px;
   height: 100px;
-}
-
-.menu_bar li a{
-  display: flex;
-  align-items: center;
 }
 
 .pie-chart {
@@ -161,7 +191,7 @@ ul li a:hover {
     darkred 0% 5%,
     yellow 5% 15%,       
     darkgreen 15% 50%,   
-    purple 50% 100%         
+    purple 50% 100%
   );
 }
 
@@ -184,18 +214,18 @@ ul li a:hover {
 }
 
 .legend {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    background-color: rgba(39, 121, 165, 0);
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  background-color: rgba(39, 121, 165, 0);
 }
 
 .legend li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .color-box {
@@ -208,13 +238,16 @@ ul li a:hover {
 .darkred { 
   background-color: darkred; 
 }
+
 .darkgreen {
-   background-color: darkgreen; 
+  background-color: darkgreen; 
 }
+
 .purple { 
   background-color: purple; 
 }
-.yellow{
+
+.yellow {
   background-color: yellow;
 }
 
@@ -225,9 +258,9 @@ ul li a:hover {
   align-items:center;
   margin-top: 60px;
   text-align: center;
-  
 }
-.pfp p{
+
+.pfp p {
   font-weight: bold;
   font-size: 40px;
   margin-top: 15px;
@@ -235,36 +268,36 @@ ul li a:hover {
 }
 
 .pfp-img {
-    width: 200px;
-    cursor: pointer;
+  width: 200px;
+  cursor: pointer;
 }
 
 .name {
-    font-weight: bold;
-    font-size: 22px;
-    margin-top: 15px;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 15px;
 }
 
 .notif {
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .notif-content {
-    background-color: white;
-    width: 300px;
-    padding: 20px;
-    margin: 200px auto;
-    border-radius: 8px;
+  background-color: white;
+  width: 300px;
+  padding: 20px;
+  margin: 200px auto;
+  border-radius: 8px;
 }
 
 .close {
-    margin-top: 15px;
-    padding: 8px 15px;
-    cursor: pointer;
+  margin-top: 15px;
+  padding: 8px 15px;
+  cursor: pointer;
 }
