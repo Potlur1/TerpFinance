@@ -1,6 +1,0 @@
-2026-03-20,expense,Groceries,45.20
-2026-03-20,expense,Coffee,5.50
-2026-03-20,income,Salary,200.00
-2026-03-21,expense,Gas,30.00
-2026-03-21,income,Freelance,100.00
-2026-03-22,expense,Dinner,22.75
