@@ -5,3 +5,7 @@ function showNotification() {
 function closeNotification() {
     document.getElementById("notif").style.display = "none";
 }
+
+function showFullList() {
+    document.getElementById("full_list").style.display = "show";
+}

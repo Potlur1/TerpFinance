@@ -8,7 +8,7 @@
     </div>
     <div class="remaining_budget_bg">
         <h1 class="remaining_budget">$320</h1>
-        <h2 class="remaining_time">for next 4 days</h1>
+        <h2 class="remaining_time">for next <u>4</u> days</h1>
     </div>
     <div class="total_budget_bg">
         <h2 class="total_budget">$500 weekly budget</h1>
@@ -18,12 +18,19 @@
     </div>
     <div class="recent_transactions_bg">
         <ul class="recent_transactions_list">
-            <li class="transaction">-$15 McDonalds</li>
-            <li class="transaction">+$300 Work</li>
-            <li class="transaction">-$120 Groceries</li>
-            <li class="transaction">-$30 Snacks</li>
-            <li class="transaction">-$10 Taco Bell</li>
+            <li class="transaction_red">3/29 1:56pm -$15 McDonalds</li>
+            <li class="transaction_green">3/29 8:12am +$300 Work</li>
+            <li class="transaction_red">3/27 4:25pm -$120 Groceries</li>
+            <li class="transaction_red">3/27 4:23pm -$30 Snacks</li>
+            <li><button class="transaction_full_list" onclick="showFullList()"><u>See full list</u></button></li>
         </ul>
+    </div>
+    <div class="add_transaction_bg">
+        <h2 class="add_transaction">Add transaction</h1>
+    </div>
+
+    <div id="full_list">
+
     </div>
 
     <div class="navigation_bar"> 
