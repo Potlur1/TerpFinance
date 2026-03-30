@@ -1,0 +1,211 @@
+<!doctype html>
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="background">
+    <h1>-User Profile-</h1>
+    <div class="pfp">
+        <img src="https://www.cs.umd.edu/class/spring2026/cmsc434/P1_2/SmileyFace.png" alt="pfp img" class="pfp-img" onclick="showNotification()">
+        <p class="name"><strong>Mr.Smiles</strong></p>
+    </div>
+    <div id="notif" class="notif">
+        <div class="notif-content">
+            <p>Why'd you Click on the Pfp???</p>
+            <button class="close" onclick="closeNotification()">Close</button>
+        </div>
+    </div>
+
+
+    <div class="profile-container">
+
+    <h2>Select Preset</h2>
+
+  
+    <div class="preset">
+    <div class="preset">
+    <button class="preset-header" onclick="togglePreset(this)">
+        ▶ High School Student <span>+</span>
+    </button>
+    <div class="preset-content">
+
+    <label>Allowance ($/week):</label>
+    <input type="number" placeholder="e.g. 20">
+
+    <label>Part-Time Job:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="hs-job"> Yes</label>
+      <label><input type="radio" name="hs-job"> No</label>
+    </div>
+
+    <label>If yes, Weekly Income:</label>
+    <input type="number" placeholder="e.g. 100">
+
+    <label>Spending Money ($/week):</label>
+    <input type="number" placeholder="e.g. 30">
+
+    <label>Savings Goal:</label>
+    <input type="number" placeholder="e.g. 500">
+
+  </div>
+</div>
+
+<div class="preset">
+  <button class="preset-header" onclick="togglePreset(this)">
+    ▶ College Student <span>+</span>
+  </button>
+
+  <div class="preset-content">
+
+    <label>Housing:</label>
+    <select>
+      <option>Dorm</option>
+      <option>Apartment</option>
+      <option>Commute</option>
+    </select>
+
+    <label>Rent ($/month):</label>
+    <input type="number" placeholder="1500">
+
+    <label>Dining Plan:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="college-dining"> Yes</label>
+      <label><input type="radio" name="college-dining"> No</label>
+    </div>
+
+    <label>Groceries:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="college-groceries"> Yes</label>
+      <label><input type="radio" name="college-groceries"> No</label>
+    </div>
+
+    <label>Groceries Budget ($/week):</label>
+    <input type="number" placeholder="90">
+
+    <label>Part-Time Income ($/month):</label>
+    <input type="number" placeholder="800">
+
+  </div>
+</div>
+
+<div class="preset">
+  <button class="preset-header" onclick="togglePreset(this)">
+    ▶ Salary Worker <span>+</span>
+  </button>
+
+  <div class="preset-content">
+
+    <label>Monthly Salary:</label>
+    <input type="number" placeholder="4000">
+
+    <label>Rent/Mortgage:</label>
+    <input type="number" placeholder="1500">
+
+    <label>Utilities ($/month):</label>
+    <input type="number" placeholder="200">
+
+    <label>Transportation:</label>
+    <input type="number" placeholder="300">
+
+    <label>Groceries ($/month):</label>
+    <input type="number" placeholder="400">
+
+    <label>Savings Contribution ($/month):</label>
+    <input type="number" placeholder="500">
+
+  </div>
+</div>
+
+
+<div class="preset">
+  <button class="preset-header" onclick="togglePreset(this)">
+    ▶ Freelance Worker <span>+</span>
+  </button>
+
+  <div class="preset-content">
+
+    <label>Average Weekly Income:</label>
+    <input type="number" placeholder="1000">
+
+    <label>Income Variability:</label>
+    <select>
+      <option>Low</option>
+      <option>Medium</option>
+      <option>High</option>
+    </select>
+
+    <label>Rent:</label>
+    <input type="number" placeholder="1200">
+
+    <label>Utilities:</label>
+    <input type="number" placeholder="200">
+
+    <label>Emergency Fund Goal:</label>
+    <input type="number" placeholder="5000">
+
+    <label>Business Expenses ($/month):</label>
+    <input type="number" placeholder="300">
+
+  </div>
+</div>
+
+
+<div class="preset">
+  <button class="preset-header" onclick="togglePreset(this)">
+    ▶ Retiree <span>+</span>
+  </button>
+
+  <div class="preset-content">
+
+    <label>Monthly Income (Pension/Social Security):</label>
+    <input type="number" placeholder="2500">
+
+    <label>Housing Cost:</label>
+    <input type="number" placeholder="1000">
+
+    <label>Healthcare ($/month):</label>
+    <input type="number" placeholder="300">
+
+    <label>Groceries:</label>
+    <input type="number" placeholder="300">
+
+    <label>Leisure/Travel Budget:</label>
+    <input type="number" placeholder="200">
+
+    <label>Savings / Investments:</label>
+    <input type="number" placeholder="400">
+
+  </div>
+</div>
+
+<div class="custom-profile">
+    <button class="custom-btn" onclick="toggleCustom()">Use Custom Profile</button>
+
+    <div id="customForm" class="hidden">
+      <label>Rent:</label>
+      <input type="number">
+
+      <label>Groceries:</label>
+      <input type="number">
+
+      <label>Income:</label>
+      <input type="number">
+
+      <button class="save-btn">Save Profile</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+    <div class="navigation_bar"> 
+        <ul class="menu_bar">
+            <li><a href="analytics.html"><img src="Icon-Images/analytics.png" alt="Analytics" class="icon"></a></li>
+            <li><a href="calendar.html"><img src="Icon-Images/calendar.png" alt="Calendar" class="icon"></a></li>
+            <li><a href="index.html"><img src="Icon-Images/home.png" alt="Home" class="icon"></a></li>
+            <li><a href="budget.html"><img src="Icon-Images/budget.png" alt="Budget" class="icon"></a></li>
+            <li><a href="profile.html"><img src="Icon-Images/profile.png" alt="Profile" class="icon"></a></li>
+        </ul>
+    </div>
+    <script src="js/main.js"></script>
+</body>
