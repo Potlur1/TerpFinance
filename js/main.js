@@ -138,7 +138,7 @@ function createBudgetCard(budget, index) {
   const isSavingsType =
     budget.category.trim().toLowerCase() === "savings" || budget.type === "long";
 
-  let fillClass = "green";
+  let fillClass = "budget-green";
   let statusClass = "status-good";
   let rightText = "";
   let statusText = "";
@@ -153,7 +153,7 @@ function createBudgetCard(budget, index) {
     const overAmount = budget.current - budget.target;
     rightText = `$${overAmount} over`;
     statusText = `Over by $${overAmount}`;
-    fillClass = "red";
+    fillClass = "budget-red";
     statusClass = "status-danger";
     moneyClass = "danger";
   } else if (isSavingsType) {
@@ -164,7 +164,7 @@ function createBudgetCard(budget, index) {
     rightText = `$${remaining} left`;
 
     if (percent >= 80) {
-      fillClass = "yellow";
+      fillClass = "budget-yellow";
       statusClass = "status-warning";
       moneyClass = "warning";
       statusText = budget.dateLabel ? `Close to limit for ${budget.dateLabel}` : "Near limit";
