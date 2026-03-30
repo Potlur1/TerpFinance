@@ -355,6 +355,21 @@ budgetForm.addEventListener("submit", (event) => {
   closeModal();
 });
 
+function togglePreset(button) {
+  const content = button.nextElementSibling;
+
+  if (content.style.display === "block") {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
+}
+
+function toggleCustom() {
+  const form = document.getElementById("customForm");
+  form.classList.toggle("hidden");
+}
+
 openAddModalBtn.addEventListener("click", () => {
   openModal(false);
 });
