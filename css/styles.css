@@ -9,11 +9,20 @@ body {
   background: #f7f7f7;
 }
 
+#home_background {
+  height: 100vh;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .welcome_message {
   height: 10vh;
   width: 85vw;
-  margin: 30px;
-  font-size: 20pt;
+  margin-bottom: 15px;
+  font-size: 15pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
   
@@ -31,7 +40,7 @@ body {
 }
 
 .remaining_budget {
-  font-size: 75pt;
+  font-size: 57pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: darkgreen;
   margin: 0;
@@ -39,7 +48,7 @@ body {
 }
 
 .remaining_time {
-  font-size: 30pt;
+  font-size: 22pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0;
   margin-top: 1vh;
@@ -58,23 +67,23 @@ body {
 }
 
 .total_budget {
-  font-size: 25pt;
+  font-size: 18pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0;
   margin-top: 1.3vh;
 }
 
 .recent_transactions_message {
-  height: 4vh;
+  height: auto;
   width: 85vw;
-  margin: 50px;
-  font-size: 15pt;
+  margin-top: 20px;
+  font-size: 12pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .recent_transactions_bg {
   width: 100vw;
-  height: 379px;
+  height: auto;
   justify-content: center;
   align-items: center;
 }
@@ -82,6 +91,8 @@ body {
 .recent_transactions_list {
   width: 100vw;
   display: flex;
+  padding: 0;
+  margin-top: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -90,31 +101,37 @@ body {
 
 .transaction_red {
   padding: 1vh;
-  font-size: 30pt;  
+  font-size: 22pt;  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: red;
 }
 
 .transaction_green {
   padding: 1vh;
-  font-size: 30pt;  
+  font-size: 22pt;  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: darkgreen;
 }
 
-.transaction_full_list {
+#open_full_list {
   all: unset;
   padding: 1vh;
-  font-size: 30pt;  
+  margin: 1vh;
+  border: 1px black solid;
+  border-radius: 5px;
+  font-size: 22pt;  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #000000;
 }
 
+#full_list::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .add_transaction_bg {
-  height: 5vh;
+  height: 8vh;
   width: 60vw;
   left: 20vw;
-  margin-top: 3.5vh;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -123,11 +140,11 @@ body {
 }
 
 .add_transaction {
-  font-size: 25pt;
+  font-size: 22pt;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #ffffff;
   margin: 0;
-  margin-top: 1vh;
+  margin-top: 2vh;
 }
 
 .navigation_bar {

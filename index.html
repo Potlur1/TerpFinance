@@ -6,7 +6,7 @@
   <title>TerpFinance</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="background">
+<body id="home_background">
     <div class="welcome_message">
         <h1>Welcome Back, John</h1>
     </div>
@@ -26,16 +26,18 @@
             <li class="transaction_green">3/29 8:12am +$300 Work</li>
             <li class="transaction_red">3/27 4:25pm -$120 Groceries</li>
             <li class="transaction_red">3/27 4:23pm -$30 Snacks</li>
-            <li><button class="transaction_full_list" onclick="showFullList()"><u>See full list</u></button></li>
+            <li><button id="open_full_list">See full list</button></li>
         </ul>
     </div>
     <div class="add_transaction_bg">
         <h2 class="add_transaction">Add transaction</h1>
     </div>
 
-    <div id="full_list">
-
-    </div>
+    <dialog id="full_list">
+        <h2>All Transactions</h2>
+        <p id="all_transactions">transaction 1<br>transaction 2<br>transaction 3<br>transaction4<br>transaction 5</p>
+        <button id="close_full_list">Close</button>
+    </dialog>
 
     <div class="navigation_bar"> 
         <ul class="menu_bar">
@@ -46,4 +48,5 @@
             <li><a href="profile.html"><img src="Icon-Images/profile.png" alt="Profile" class="icon"></a></li>
         </ul>
     </div>
+    <script src="js/main.js"></script>
 </body>
