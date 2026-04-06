@@ -1,33 +1,13 @@
-const fullList = document.getElementById('full_list');
-const openFullList = document.getElementById('open_full_list');
-const closeFullList = document.getElementById('close_full_list');
-const allTransactions = document.getElementById('all_transactions');
-var all_transactions_text = "";
-
-function updateTransactionsText() {
-  fetch('data.txt')
-    .then(response => response.text())
-    .then(text => all_transactions_text = text);
-}
-
-openFullList.addEventListener('click', () => {
-    (async () => {
-      await updateTransactionsText();
-      allTransactions.textContent = all_transactions_text;
-      fullList.showModal();
-    })();
-});
-
-closeFullList.addEventListener('click', () => {
-    fullList.close();
-});
-
 function showNotification() {
     document.getElementById("notif").style.display = "block";
 }
 
 function closeNotification() {
     document.getElementById("notif").style.display = "none";
+}
+
+function showFullList() {
+    document.getElementById("full_list").style.display = "show";
 }
 
 const shortTermBudgetList = document.getElementById("shortTermBudgetList");
