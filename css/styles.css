@@ -183,6 +183,7 @@ body {
   align-items: center;
   text-decoration: none;
   border: 2px black solid;
+<<<<<<< HEAD
   transition: background-color 0.2s ease;
 }
 
@@ -192,6 +193,12 @@ body {
 
 .menu_bar li a.active{
   background-color: rgb(3, 170, 3);
+=======
+}
+
+.menu_bar li a:hover {
+  background-color: #faf21b;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
 }
 
 .background {
@@ -371,8 +378,13 @@ body {
 
 .muted {
   margin: 0;
+<<<<<<< HEAD
   color: #222222;
   font-size: 24px;
+=======
+  color: #555;
+  font-size: 21px;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
 }
 
 .row {
@@ -388,8 +400,13 @@ body {
 }
 
 .small-text {
+<<<<<<< HEAD
   font-size: 21px;
   color: #222222;
+=======
+  font-size: 18px;
+  color: #444;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
 }
 
 .money {
@@ -446,12 +463,20 @@ body {
 .icon-btn {
   border: none;
   cursor: pointer;
+<<<<<<< HEAD
   font-size: 24px;
+=======
+  font-size: 18px;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
 }
 
 .primary-btn {
   flex: 1;
+<<<<<<< HEAD
   background: #4e925d;
+=======
+  background: #5a9667;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
   color: white;
   padding: 15px 18px;
   border-radius: 16px;
@@ -500,8 +525,12 @@ body {
 }
 
 .budget-card {
+<<<<<<< HEAD
   background: #ffffff;
   border: 5px solid #929292;
+=======
+  background: #cfcdcd;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
   border-radius: 20px;
   padding: 18px;
   margin-bottom: 14px;
@@ -517,16 +546,28 @@ body {
 
 .budget-card h3 {
   margin: 0 0 8px;
+<<<<<<< HEAD
   font-size: 24px;
 }
 
 .budget-meta {
   font-size: 23px;
+=======
+  font-size: 22px;
+}
+
+.budget-meta {
+  font-size: 18px;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
   margin-bottom: 6px;
 }
 
 .status-text {
+<<<<<<< HEAD
   font-size: 20px;
+=======
+  font-size: 17px;
+>>>>>>> 08cf1b8fae5f2961f23bdb2d459043fa93990321
   font-weight: 700;
   margin-top: 10px;
 }
