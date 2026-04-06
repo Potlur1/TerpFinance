@@ -395,7 +395,30 @@ budgetModal.addEventListener("click", (event) => {
     closeModal();
   }
 });
+function setupBudgetSectionToggles() {
+  const collapsibleHeaders = document.querySelectorAll(".collapsible-header");
 
+  collapsibleHeaders.forEach((header) => {
+    const toggleBtn = header.querySelector(".expand-toggle");
+    const targetId = header.dataset.target;
+    const targetSection = document.getElementById(targetId);
+
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = targetSection.classList.toggle("hidden");
+      toggleBtn.setAttribute("aria-expanded", String(!isHidden));
+
+      const chevron = toggleBtn.querySelector(".chevron");
+      chevron.classList.toggle("rotated", isHidden);
+    });
+
+    header.addEventListener("click", (event) => {
+      if (event.target.tagName.toLowerCase() !== "button" && !event.target.closest("button")) {
+        toggleBtn.click();
+      }
+    });
+  });
+}
 closeModal();
 renderMainBudget();
 renderBudgets();
+setupBudgetSectionToggles();
