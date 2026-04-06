@@ -468,6 +468,31 @@ body {
 .section-title-row {
   margin-bottom: 10px;
 }
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.expand-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expand-toggle .chevron {
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+.expand-toggle .chevron.rotated {
+  transform: rotate(-90deg);
+}
 
 .budget-card {
   background: #cfcdcd;
