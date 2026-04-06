@@ -46,19 +46,25 @@
       <button id="openAddModalBtn" class="primary-btn" type="button">+ Add Budget</button>
     </section>
 
-    <section class="budget-section">
-      <div class="section-title-row">
-        <h2>Short-Term Budgets</h2>
-      </div>
-      <div id="shortTermBudgetList"></div>
-    </section>
+<section class="budget-section">
+  <div class="section-title-row collapsible-header" data-target="shortTermBudgetList">
+    <h2>Short-Term Budgets</h2>
+    <button class="expand-toggle" type="button" aria-expanded="true" aria-label="Toggle short-term budgets">
+      <span class="chevron">&#9662;</span>
+    </button>
+  </div>
+  <div id="shortTermBudgetList"></div>
+</section>
 
-    <section class="budget-section">
-      <div class="section-title-row">
-        <h2>Long-Term Budgets</h2>
-      </div>
-      <div id="longTermBudgetList"></div>
-    </section>
+<section class="budget-section">
+  <div class="section-title-row collapsible-header" data-target="longTermBudgetList">
+    <h2>Long-Term Budgets</h2>
+    <button class="expand-toggle" type="button" aria-expanded="true" aria-label="Toggle long-term budgets">
+      <span class="chevron">&#9662;</span>
+    </button>
+  </div>
+  <div id="longTermBudgetList"></div>
+</section>
   </main>
 
   <div id="budgetModal" class="modal hidden">
