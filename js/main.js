@@ -14,10 +14,10 @@ const welcomeBack = document.getElementById("welcome_back");
 
 if (welcomeBack !== null) {
   if (sessionStorage.getItem("userName") === null) {
-    welcomeBack.textContent = "Welcome Back, John";
+    welcomeBack.textContent = "John's Home";
   }
   else {
-    welcomeBack.textContent = sessionStorage.getItem("userName");
+    welcomeBack.textContent = "Jacob's Home";
   }
 }
 
