@@ -21,6 +21,23 @@ if (welcomeBack !== null) {
   }
 }
 
+const switchEl = document.getElementById('iconSwitch');
+const graphImage = document.getElementById("graph_image");
+var graphBool = false;
+
+if (switchEl !== null) {
+  switchEl.addEventListener('click', () => {
+    switchEl.classList.toggle('on');
+    graphBool = !graphBool;
+    if (graphBool) {
+      graphImage.src = "Icon-Images/pie-chart.png";
+    }
+    else {
+      graphImage.src = "Icon-Images/line-graph.png";
+    }
+  });
+}
+
 const shortTermBudgetList = document.getElementById("shortTermBudgetList");
 const longTermBudgetList = document.getElementById("longTermBudgetList");
 
