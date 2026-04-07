@@ -13,178 +13,213 @@
       <p>Select and customize a preset profile</p>
     </section>
     <h1>Current Profile</h1>
-    <p id="">Salary Worker<br>Salary: $5000 / week<br>Rent: $2500 / month<br>Savings Goal: $1000</p>
-
+    <div id="current_profile_display">
+      <div id="profile-card-empty">
+        <p>No profile saved yet. Select a preset below to get started.</p>
+      </div>
+      <div id="profile-card" style="display:none;">
+        <p id="profile-card-type"></p>
+        <h2 id="profile-card-name"></h2>
+        <ul id="profile-card-details"></ul>
+      </div>
+    </div>
+ 
     <div class="profile-container">
-
+ 
     <h2>Select Preset</h2>
-
+ 
+    <!-- HIGH SCHOOL STUDENT -->
     <div class="preset">
-    <div class="preset">
-    <button class="preset-header" onclick="togglePreset(this)">
+      <button class="preset-header" onclick="togglePreset(this)">
         ▶ High School Student <span>+</span>
-    </button>
-    <div class="preset-content">
-
-    <label>Name:</label>
-    <input type="text" placeholder="e.g. John">
-
-    <label>Allowance ($/week):</label>
-    <input type="number" placeholder="e.g. 20">
-
-    <label>Part-Time Job:</label>
-    <div class="radio-group">
-      <label><input type="radio" name="hs-job"> Yes</label>
-      <label><input type="radio" name="hs-job"> No</label>
+      </button>
+      <div class="preset-content">
+ 
+        <label>Name:</label>
+        <input type="text" id="hs-name" placeholder="e.g. John">
+ 
+        <label>Allowance ($/week):</label>
+        <input type="number" id="hs-allowance" placeholder="e.g. 20">
+ 
+        <label>Part-Time Job:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="hs-job" value="yes"> Yes</label>
+          <label><input type="radio" name="hs-job" value="no"> No</label>
+        </div>
+ 
+        <label>If yes, Weekly Income:</label>
+        <input type="number" id="hs-income" placeholder="e.g. 100">
+ 
+        <label>Spending Money ($/week):</label>
+        <input type="number" id="hs-spending" placeholder="e.g. 30">
+ 
+        <label>Savings Goal:</label>
+        <input type="number" id="hs-savings" placeholder="e.g. 500">
+ 
+        <div class="save-profile">
+          <button class="save-btn" onclick="saveHighSchoolProfile()">Save Profile</button>
+        </div>
+ 
+      </div>
     </div>
-
-    <label>If yes, Weekly Income:</label>
-    <input type="number" placeholder="e.g. 100">
-
-    <label>Spending Money ($/week):</label>
-    <input type="number" placeholder="e.g. 30">
-
-    <label>Savings Goal:</label>
-    <input type="number" placeholder="e.g. 500">
-
-    <div class="save-profile">
-      <button class="save-btn" onclick="toggleCustom()">Save Profile</button>
-    </div>
-
-    </div>
-    </div>
-
+ 
+    <!-- COLLEGE STUDENT -->
     <div class="preset">
       <button class="preset-header" onclick="togglePreset(this)">
         ▶ College Student <span>+</span>
       </button>
-
       <div class="preset-content">
-
+ 
+        <label>Name:</label>
+        <input type="text" id="college-name" placeholder="e.g. Jane">
+ 
         <label>Housing:</label>
-        <select>
+        <select id="college-housing">
           <option>Dorm</option>
           <option>Apartment</option>
           <option>Commute</option>
         </select>
-
+ 
         <label>Rent ($/month):</label>
-        <input type="number" placeholder="1500">
-
+        <input type="number" id="college-rent" placeholder="1500">
+ 
         <label>Dining Plan:</label>
         <div class="radio-group">
-          <label><input type="radio" name="college-dining"> Yes</label>
-          <label><input type="radio" name="college-dining"> No</label>
+          <label><input type="radio" name="college-dining" value="yes"> Yes</label>
+          <label><input type="radio" name="college-dining" value="no"> No</label>
         </div>
-
+ 
         <label>Groceries:</label>
         <div class="radio-group">
-          <label><input type="radio" name="college-groceries"> Yes</label>
-          <label><input type="radio" name="college-groceries"> No</label>
+          <label><input type="radio" name="college-groceries" value="yes"> Yes</label>
+          <label><input type="radio" name="college-groceries" value="no"> No</label>
         </div>
-
+ 
         <label>Groceries Budget ($/week):</label>
-        <input type="number" placeholder="90">
-
+        <input type="number" id="college-groceries-budget" placeholder="90">
+ 
         <label>Part-Time Income ($/month):</label>
-        <input type="number" placeholder="800">
-
+        <input type="number" id="college-income" placeholder="800">
+ 
+        <div class="save-profile">
+          <button class="save-btn" onclick="saveCollegeProfile()">Save Profile</button>
+        </div>
+ 
       </div>
     </div>
-
+ 
+    <!-- SALARY WORKER -->
     <div class="preset">
       <button class="preset-header" onclick="togglePreset(this)">
         ▶ Salary Worker <span>+</span>
       </button>
-
       <div class="preset-content">
-
-        <label>Monthly Salary:</label>
-        <input type="number" placeholder="4000">
-
-        <label>Rent/Mortgage:</label>
-        <input type="number" placeholder="1500">
-
+ 
+        <label>Name:</label>
+        <input type="text" id="salary-name" placeholder="e.g. Alex">
+ 
+        <label>Monthly Salary ($):</label>
+        <input type="number" id="salary-amount" placeholder="4000">
+ 
+        <label>Rent/Mortgage ($/month):</label>
+        <input type="number" id="salary-rent" placeholder="1500">
+ 
         <label>Utilities ($/month):</label>
-        <input type="number" placeholder="200">
-
-        <label>Transportation:</label>
-        <input type="number" placeholder="300">
-
+        <input type="number" id="salary-utilities" placeholder="200">
+ 
+        <label>Transportation ($/month):</label>
+        <input type="number" id="salary-transport" placeholder="300">
+ 
         <label>Groceries ($/month):</label>
-        <input type="number" placeholder="400">
-
+        <input type="number" id="salary-groceries" placeholder="400">
+ 
         <label>Savings Contribution ($/month):</label>
-        <input type="number" placeholder="500">
-
+        <input type="number" id="salary-savings" placeholder="500">
+ 
+        <div class="save-profile">
+          <button class="save-btn" onclick="saveSalaryProfile()">Save Profile</button>
+        </div>
+ 
       </div>
     </div>
-
-
+ 
+    <!-- FREELANCE WORKER -->
     <div class="preset">
       <button class="preset-header" onclick="togglePreset(this)">
         ▶ Freelance Worker <span>+</span>
       </button>
-
       <div class="preset-content">
-
-        <label>Average Weekly Income:</label>
-        <input type="number" placeholder="1000">
-
+ 
+        <label>Name:</label>
+        <input type="text" id="freelance-name" placeholder="e.g. Sam">
+ 
+        <label>Average Weekly Income ($):</label>
+        <input type="number" id="freelance-income" placeholder="1000">
+ 
         <label>Income Variability:</label>
-        <select>
+        <select id="freelance-variability">
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
         </select>
-
-        <label>Rent:</label>
-        <input type="number" placeholder="1200">
-
-        <label>Utilities:</label>
-        <input type="number" placeholder="200">
-
-        <label>Emergency Fund Goal:</label>
-        <input type="number" placeholder="5000">
-
+ 
+        <label>Rent ($/month):</label>
+        <input type="number" id="freelance-rent" placeholder="1200">
+ 
+        <label>Utilities ($/month):</label>
+        <input type="number" id="freelance-utilities" placeholder="200">
+ 
+        <label>Emergency Fund Goal ($):</label>
+        <input type="number" id="freelance-emergency" placeholder="5000">
+ 
         <label>Business Expenses ($/month):</label>
-        <input type="number" placeholder="300">
-
+        <input type="number" id="freelance-business" placeholder="300">
+ 
+        <div class="save-profile">
+          <button class="save-btn" onclick="saveFreelanceProfile()">Save Profile</button>
+        </div>
+ 
       </div>
     </div>
-
-
+ 
+    <!-- RETIREE -->
     <div class="preset">
       <button class="preset-header" onclick="togglePreset(this)">
         ▶ Retiree <span>+</span>
       </button>
-
       <div class="preset-content">
-
-        <label>Monthly Income (Pension/Social Security):</label>
-        <input type="number" placeholder="2500">
-
-        <label>Housing Cost:</label>
-        <input type="number" placeholder="1000">
-
+ 
+        <label>Name:</label>
+        <input type="text" id="retiree-name" placeholder="e.g. Carol">
+ 
+        <label>Monthly Income (Pension/Social Security) ($):</label>
+        <input type="number" id="retiree-income" placeholder="2500">
+ 
+        <label>Housing Cost ($/month):</label>
+        <input type="number" id="retiree-housing" placeholder="1000">
+ 
         <label>Healthcare ($/month):</label>
-        <input type="number" placeholder="300">
-
-        <label>Groceries:</label>
-        <input type="number" placeholder="300">
-
-        <label>Leisure/Travel Budget:</label>
-        <input type="number" placeholder="200">
-
-        <label>Savings / Investments:</label>
-        <input type="number" placeholder="400">
-
+        <input type="number" id="retiree-healthcare" placeholder="300">
+ 
+        <label>Groceries ($/month):</label>
+        <input type="number" id="retiree-groceries" placeholder="300">
+ 
+        <label>Leisure/Travel Budget ($/month):</label>
+        <input type="number" id="retiree-leisure" placeholder="200">
+ 
+        <label>Savings / Investments ($/month):</label>
+        <input type="number" id="retiree-savings" placeholder="400">
+ 
+        <div class="save-profile">
+          <button class="save-btn" onclick="saveRetireeProfile()">Save Profile</button>
+        </div>
+ 
       </div>
     </div>
-
+ 
     </div>
   </main>
-
+ 
   <div class="navigation_bar"> 
       <ul class="menu_bar">
           <li><a href="index.html"><img src="Icon-Images/home.png" alt="Home" class="icon"><p>Home</p></a></li>
@@ -195,3 +230,4 @@
   </div>
   <script src="js/main.js"></script>
 </body>
+</html>

@@ -21,6 +21,149 @@ if (welcomeBack !== null) {
   }
 }
 
+function saveProfile(name, profileType, details) {
+  if (!name || name.trim() === "") {
+    alert("Please enter your name before saving.");
+    return;
+  }
+  const trimmed = name.trim();
+  sessionStorage.setItem("userName", trimmed);
+  sessionStorage.setItem("profileType", profileType);
+  sessionStorage.setItem("profileDetails", JSON.stringify(details));
+  updateCurrentProfileDisplay(trimmed, profileType, details);
+  alert("Profile saved! Head to the Home screen to see your updated welcome message.");
+}
+ 
+function updateCurrentProfileDisplay(name, profileType, details) {
+  const emptyCard  = document.getElementById("profile-card-empty");
+  const card       = document.getElementById("profile-card");
+  const cardType   = document.getElementById("profile-card-type");
+  const cardName   = document.getElementById("profile-card-name");
+  const cardDetails = document.getElementById("profile-card-details");
+  if (!card) return;
+ 
+  emptyCard.style.display = "none";
+  card.style.display = "block";
+ 
+  cardType.textContent = profileType;
+  cardName.textContent = name;
+ 
+  cardDetails.innerHTML = "";
+  for (const [key, value] of Object.entries(details)) {
+    if (value !== "" && value !== null && value !== undefined && value !== "—") {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="profile-detail-label">${key}:</span> <span class="profile-detail-value">${value}</span>`;
+      cardDetails.appendChild(li);
+    }
+  }
+}
+ 
+function saveHighSchoolProfile() {
+  const name        = document.getElementById("hs-name").value;
+  const allowance   = document.getElementById("hs-allowance").value;
+  const income      = document.getElementById("hs-income").value;
+  const spending    = document.getElementById("hs-spending").value;
+  const savings     = document.getElementById("hs-savings").value;
+  const jobRadio    = document.querySelector('input[name="hs-job"]:checked');
+  const hasJob      = jobRadio ? jobRadio.value : "—";
+ 
+  saveProfile(name, "High School Student", {
+    "Allowance ($/week)": allowance ? `$${allowance}` : "—",
+    "Part-Time Job": hasJob,
+    "Weekly Income ($/week)": income ? `$${income}` : "—",
+    "Spending Money ($/week)": spending ? `$${spending}` : "—",
+    "Savings Goal": savings ? `$${savings}` : "—"
+  });
+}
+ 
+function saveCollegeProfile() {
+  const name       = document.getElementById("college-name").value;
+  const housing    = document.getElementById("college-housing").value;
+  const rent       = document.getElementById("college-rent").value;
+  const grocBudget = document.getElementById("college-groceries-budget").value;
+  const income     = document.getElementById("college-income").value;
+  const diningRadio   = document.querySelector('input[name="college-dining"]:checked');
+  const grocRadio     = document.querySelector('input[name="college-groceries"]:checked');
+ 
+  saveProfile(name, "College Student", {
+    "Housing": housing,
+    "Rent ($/month)": rent ? `$${rent}` : "—",
+    "Dining Plan": diningRadio ? diningRadio.value : "—",
+    "Buys Groceries": grocRadio ? grocRadio.value : "—",
+    "Groceries Budget ($/week)": grocBudget ? `$${grocBudget}` : "—",
+    "Part-Time Income ($/month)": income ? `$${income}` : "—"
+  });
+}
+ 
+function saveSalaryProfile() {
+  const name       = document.getElementById("salary-name").value;
+  const salary     = document.getElementById("salary-amount").value;
+  const rent       = document.getElementById("salary-rent").value;
+  const utilities  = document.getElementById("salary-utilities").value;
+  const transport  = document.getElementById("salary-transport").value;
+  const groceries  = document.getElementById("salary-groceries").value;
+  const savings    = document.getElementById("salary-savings").value;
+ 
+  saveProfile(name, "Salary Worker", {
+    "Monthly Salary": salary ? `$${salary}` : "—",
+    "Rent/Mortgage ($/month)": rent ? `$${rent}` : "—",
+    "Utilities ($/month)": utilities ? `$${utilities}` : "—",
+    "Transportation ($/month)": transport ? `$${transport}` : "—",
+    "Groceries ($/month)": groceries ? `$${groceries}` : "—",
+    "Savings Contribution ($/month)": savings ? `$${savings}` : "—"
+  });
+}
+ 
+function saveFreelanceProfile() {
+  const name        = document.getElementById("freelance-name").value;
+  const income      = document.getElementById("freelance-income").value;
+  const variability = document.getElementById("freelance-variability").value;
+  const rent        = document.getElementById("freelance-rent").value;
+  const utilities   = document.getElementById("freelance-utilities").value;
+  const emergency   = document.getElementById("freelance-emergency").value;
+  const business    = document.getElementById("freelance-business").value;
+ 
+  saveProfile(name, "Freelance Worker", {
+    "Avg Weekly Income": income ? `$${income}` : "—",
+    "Income Variability": variability,
+    "Rent ($/month)": rent ? `$${rent}` : "—",
+    "Utilities ($/month)": utilities ? `$${utilities}` : "—",
+    "Emergency Fund Goal": emergency ? `$${emergency}` : "—",
+    "Business Expenses ($/month)": business ? `$${business}` : "—"
+  });
+}
+ 
+function saveRetireeProfile() {
+  const name       = document.getElementById("retiree-name").value;
+  const income     = document.getElementById("retiree-income").value;
+  const housing    = document.getElementById("retiree-housing").value;
+  const healthcare = document.getElementById("retiree-healthcare").value;
+  const groceries  = document.getElementById("retiree-groceries").value;
+  const leisure    = document.getElementById("retiree-leisure").value;
+  const savings    = document.getElementById("retiree-savings").value;
+ 
+  saveProfile(name, "Retiree", {
+    "Monthly Income": income ? `$${income}` : "—",
+    "Housing ($/month)": housing ? `$${housing}` : "—",
+    "Healthcare ($/month)": healthcare ? `$${healthcare}` : "—",
+    "Groceries ($/month)": groceries ? `$${groceries}` : "—",
+    "Leisure/Travel ($/month)": leisure ? `$${leisure}` : "—",
+    "Savings/Investments ($/month)": savings ? `$${savings}` : "—"
+  });
+}
+ 
+(function loadSavedProfile() {
+  const display = document.getElementById("current_profile_display");
+  if (!display) return;
+  const savedName = sessionStorage.getItem("userName");
+  const savedType = sessionStorage.getItem("profileType");
+  const savedDetails = sessionStorage.getItem("profileDetails");
+  if (savedName && savedType) {
+    const details = savedDetails ? JSON.parse(savedDetails) : {};
+    updateCurrentProfileDisplay(savedName, savedType, details);
+  }
+})();
+
 const switchEl = document.getElementById('iconSwitch');
 const graphImage = document.getElementById("graph_image");
 var graphBool = false;
