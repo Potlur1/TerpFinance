@@ -30,11 +30,11 @@ if (welcomeBack) {
 }
 
 let transactions = [
+  { date: "4/6", name: "Stussy", amount: 45, type: "expense", category: "clothes"},
   { date: "3/29", name: "McDonalds", amount: 15, type: "expense", category: "food" },
   { date: "3/29", name: "Work", amount: 300, type: "income", category: "other" },
   { date: "3/27", name: "Groceries", amount: 120, type: "expense", category: "food" },
   { date: "3/27", name: "Snacks", amount: 30, type: "expense", category: "food" },
-  { date: "3/26", name: "Chipotle", amount: 18, type: "expense", category: "food" }
 ];
 
 function saveTransactions() {
