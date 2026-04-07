@@ -22,16 +22,11 @@ if (welcomeBack !== null) {
 }
 
 function saveProfile(name, profileType, details) {
-  if (!name || name.trim() === "") {
-    alert("Please enter your name before saving.");
-    return;
-  }
   const trimmed = name.trim();
   sessionStorage.setItem("userName", trimmed);
   sessionStorage.setItem("profileType", profileType);
   sessionStorage.setItem("profileDetails", JSON.stringify(details));
   updateCurrentProfileDisplay(trimmed, profileType, details);
-  alert("Profile saved! Head to the Home screen to see your updated welcome message.");
 }
  
 function updateCurrentProfileDisplay(name, profileType, details) {
