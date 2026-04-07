@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile</title>
+  <title>TerpFinance</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="background">
@@ -20,6 +20,9 @@
         ▶ High School Student <span>+</span>
     </button>
     <div class="preset-content">
+
+    <label>Name:</label>
+    <input type="text" placeholder="e.g. John">
 
     <label>Allowance ($/week):</label>
     <input type="number" placeholder="e.g. 20">
@@ -38,6 +41,10 @@
 
     <label>Savings Goal:</label>
     <input type="number" placeholder="e.g. 500">
+
+    <div class="save-profile">
+      <button class="save-btn" onclick="toggleCustom()">Save Profile</button>
+    </div>
 
   </div>
 </div>
@@ -170,26 +177,7 @@
   </div>
 </div>
 
-<div class="custom-profile">
-    <button class="custom-btn" onclick="toggleCustom()">Use Custom Profile</button>
-
-    <div id="customForm" class="hidden">
-      <label>Rent:</label>
-      <input type="number">
-
-      <label>Groceries:</label>
-      <input type="number">
-
-      <label>Income:</label>
-      <input type="number">
-
-      <button class="save-btn">Save Profile</button>
-    </div>
-  </div>
-
 </div>
-
-
 
   <div class="navigation_bar"> 
       <ul class="menu_bar">

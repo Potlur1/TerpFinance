@@ -706,6 +706,12 @@ body {
   font-size: 16px;
 }
 
+.save-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .save-btn {
   margin-top: 10px;
   background: darkgreen;

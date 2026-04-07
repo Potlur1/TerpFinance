@@ -10,6 +10,15 @@ function showFullList() {
     document.getElementById("full_list").style.display = "show";
 }
 
+const welcomeBack = document.getElementById("welcome_back");
+
+if (sessionStorage.getItem("userName") === null) {
+  welcomeBack.textContent = "Welcome Back, John";
+}
+else {
+  welcomeBack.textContent = sessionStorage.getItem("userName");
+}
+
 const shortTermBudgetList = document.getElementById("shortTermBudgetList");
 const longTermBudgetList = document.getElementById("longTermBudgetList");
 
@@ -366,8 +375,7 @@ function togglePreset(button) {
 }
 
 function toggleCustom() {
-  const form = document.getElementById("customForm");
-  form.classList.toggle("hidden");
+  sessionStorage.setItem('userName', 'Welcome Back, Jacob');
 }
 
 openAddModalBtn.addEventListener("click", () => {
