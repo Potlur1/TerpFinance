@@ -12,11 +12,13 @@ function showFullList() {
 
 const welcomeBack = document.getElementById("welcome_back");
 
-if (sessionStorage.getItem("userName") === null) {
-  welcomeBack.textContent = "Welcome Back, John";
-}
-else {
-  welcomeBack.textContent = sessionStorage.getItem("userName");
+if (welcomeBack !== null) {
+  if (sessionStorage.getItem("userName") === null) {
+    welcomeBack.textContent = "Welcome Back, John";
+  }
+  else {
+    welcomeBack.textContent = sessionStorage.getItem("userName");
+  }
 }
 
 const shortTermBudgetList = document.getElementById("shortTermBudgetList");
@@ -365,13 +367,13 @@ budgetForm.addEventListener("submit", (event) => {
 });
 
 function togglePreset(button) {
-  const content = button.nextElementSibling;
+    const content = button.nextElementSibling;
 
-  if (content.style.display === "block") {
-    content.style.display = "none";
-  } else {
-    content.style.display = "block";
-  }
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
 }
 
 function toggleCustom() {
