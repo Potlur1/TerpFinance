@@ -220,6 +220,9 @@ const mainBudgetProgressFillEl = document.getElementById("mainBudgetProgressFill
 const mainBudgetTargetTextEl = document.getElementById("mainBudgetTargetText");
 const mainBudgetPercentTextEl = document.getElementById("mainBudgetPercentText");
 
+const keyboardContainer = document.getElementById("keyboardContainer");
+const budgetInputs = document.querySelectorAll("#budgetForm input, #budgetForm select");
+
 let mainBudget = {
   type: "main",
   name: "Weekly Essentials",
@@ -231,7 +234,7 @@ let mainBudget = {
 };
 
 let budgets = [
-    {
+  {
     type: "short",
     name: "Groceries This Week",
     category: "Food",
@@ -239,7 +242,7 @@ let budgets = [
     current: 140,
     dateLabel: "April 20, 2026"
   },
-    {
+  {
     type: "short",
     name: "Eating Out",
     category: "Food",
@@ -255,8 +258,19 @@ let budgets = [
     current: 100,
     dateLabel: "April 30, 2026"
   }
-
 ];
+
+function showKeyboard() {
+  if (keyboardContainer) {
+    keyboardContainer.classList.remove("hidden");
+  }
+}
+
+function hideKeyboard() {
+  if (keyboardContainer) {
+    keyboardContainer.classList.add("hidden");
+  }
+}
 
 function renderMainBudget() {
   const remaining = Math.max(mainBudget.target - mainBudget.current, 0);
@@ -405,6 +419,7 @@ function closeModal() {
   mainBudgetFields.classList.add("hidden");
   editIndex.value = "";
   editingMainBudget.value = "false";
+  hideKeyboard();
 }
 
 function updateBudgetTypeFields() {
@@ -531,44 +546,63 @@ budgetForm.addEventListener("submit", (event) => {
 });
 
 function togglePreset(button) {
-    const content = button.nextElementSibling;
+  const content = button.nextElementSibling;
 
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
+  if (content.style.display === "block") {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
 }
 
 function toggleCustom() {
   sessionStorage.setItem('userName', 'Welcome Back, Jacob');
 }
 
-openAddModalBtn.addEventListener("click", () => {
-  openModal(false);
-});
+if (openAddModalBtn) {
+  openAddModalBtn.addEventListener("click", () => {
+    openModal(false);
+  });
+}
 
-editMainBudgetBtn.addEventListener("click", () => {
-  startEditMainBudget();
-});
+if (editMainBudgetBtn) {
+  editMainBudgetBtn.addEventListener("click", () => {
+    startEditMainBudget();
+  });
+}
 
-closeModalBtn.addEventListener("click", () => {
-  closeModal();
-});
-
-cancelModalBtn.addEventListener("click", () => {
-  closeModal();
-});
-
-budgetType.addEventListener("change", () => {
-  updateBudgetTypeFields();
-});
-
-budgetModal.addEventListener("click", (event) => {
-  if (event.target === budgetModal) {
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
     closeModal();
-  }
+  });
+}
+
+if (cancelModalBtn) {
+  cancelModalBtn.addEventListener("click", () => {
+    closeModal();
+  });
+}
+
+if (budgetType) {
+  budgetType.addEventListener("change", () => {
+    updateBudgetTypeFields();
+    showKeyboard();
+  });
+}
+
+if (budgetModal) {
+  budgetModal.addEventListener("click", (event) => {
+    if (event.target === budgetModal) {
+      closeModal();
+    }
+  });
+}
+
+budgetInputs.forEach((field) => {
+  field.addEventListener("focus", showKeyboard);
+  field.addEventListener("click", showKeyboard);
 });
+
 function setupBudgetSectionToggles() {
   const collapsibleHeaders = document.querySelectorAll(".collapsible-header");
 
@@ -592,6 +626,7 @@ function setupBudgetSectionToggles() {
     });
   });
 }
+
 closeModal();
 renderMainBudget();
 renderBudgets();
