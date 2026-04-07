@@ -33,9 +33,13 @@ if (switchEl !== null) {
       graphImage.src = "Icon-Images/pie-chart.png";
     }
     else {
-      graphImage.src = "Icon-Images/line-graph.png";
+      graphImage.src = "Icon-Images/line-graph-week.png";
     }
   });
+}
+
+function allTimeView() {
+  graphImage.src = "Icon-Images/line-graph-all.png";
 }
 
 const shortTermBudgetList = document.getElementById("shortTermBudgetList");

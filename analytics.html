@@ -22,15 +22,19 @@
             </div>
         </div>
 
-        <h1 style="margin-top: 30px; margin-left: 25px;">Visualization</h1>
-            <div class="switch" id="iconSwitch">
-                <div class="track"></div>
-                <div class="thumb">
-                    <img class="icon-off" src="Icon-Images/line-graph-icon.png" alt="Off Icon">
-                    <img class="icon-on" src="Icon-Images/pie-chart-icon.png" alt="On Icon">
-                </div>
+        <h1 style="margin-top: 30px;">Visualization</h1>
+        <div class="switch" id="iconSwitch">
+            <div class="track"></div>
+            <div class="thumb">
+                <img class="icon-off" src="Icon-Images/line-graph-icon.png" alt="Off Icon">
+                <img class="icon-on" src="Icon-Images/pie-chart-icon.png" alt="On Icon">
             </div>
-        <img id="graph_image" src="Icon-Images/line-graph.png"></img>
+        </div>
+        <select id="graph_dropdown" name="options" onchange="allTimeView()">
+            <option class="graph_dropdown_option">Week</option>
+            <option class="graph_dropdown_option">All-Time</option>
+        </select>
+        <img id="graph_image" src="Icon-Images/line-graph-week.png"></img>
     </main>
 
     <div class="navigation_bar"> 
