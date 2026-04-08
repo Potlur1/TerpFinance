@@ -159,25 +159,41 @@ function saveRetireeProfile() {
   }
 })();
 
-const switchEl = document.getElementById('iconSwitch');
+const switchEl = document.getElementById("iconSwitch");
 const graphImage = document.getElementById("graph_image");
-var graphBool = false;
+const graphDropdown = document.getElementById("graph_dropdown");
+let graphBool = false;
+
+function updateGraphImage() {
+  if (!graphImage || !graphDropdown) return;
+
+  const selectedRange = graphDropdown.value;
+
+  if (graphBool) {
+    graphImage.src = "Icon-Images/pie-chart.png";
+  } else {
+    if (selectedRange === "Week") {
+      graphImage.src = "Icon-Images/line-graph-week.png";
+    } else if (selectedRange === "Month") {
+      graphImage.src = "Icon-Images/line-graph-week.png";
+    } else if (selectedRange === "Year") {
+      graphImage.src = "Icon-Images/line-graph-week.png";
+    } else if (selectedRange === "All-Time") {
+      graphImage.src = "Icon-Images/line-graph-all.png";
+    }
+  }
+}
 
 if (switchEl !== null) {
-  switchEl.addEventListener('click', () => {
-    switchEl.classList.toggle('on');
+  switchEl.addEventListener("click", () => {
+    switchEl.classList.toggle("on");
     graphBool = !graphBool;
-    if (graphBool) {
-      graphImage.src = "Icon-Images/pie-chart.png";
-    }
-    else {
-      graphImage.src = "Icon-Images/line-graph-week.png";
-    }
+    updateGraphImage();
   });
 }
 
 function allTimeView() {
-  graphImage.src = "Icon-Images/line-graph-all.png";
+  updateGraphImage();
 }
 
 const shortTermBudgetList = document.getElementById("shortTermBudgetList");
