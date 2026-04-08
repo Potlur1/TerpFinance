@@ -20,6 +20,9 @@ const deleteConfirmModal = document.getElementById("delete_confirm_modal");
 const confirmDeleteBtn = document.getElementById("confirm_delete_btn");
 const cancelDeleteBtn = document.getElementById("cancel_delete_btn");
 
+const keyboardContainerHome = document.getElementById("keyboardContainerHome");
+const homeTypingFields = document.querySelectorAll("#transaction_form input, #transaction_form select");
+
 let pendingDeleteIndex = null;
 
 if (welcomeBack) {
@@ -30,12 +33,24 @@ if (welcomeBack) {
 }
 
 let transactions = [
-  { date: "4/6", name: "Stussy", amount: 45, type: "expense", category: "clothes"},
+  { date: "4/6", name: "Stussy", amount: 45, type: "expense", category: "clothes" },
   { date: "3/29", name: "McDonalds", amount: 15, type: "expense", category: "food" },
   { date: "3/29", name: "Work", amount: 300, type: "income", category: "other" },
   { date: "3/27", name: "Groceries", amount: 120, type: "expense", category: "food" },
   { date: "3/27", name: "Snacks", amount: 30, type: "expense", category: "food" },
 ];
+
+function showKeyboardHome() {
+  if (keyboardContainerHome) {
+    keyboardContainerHome.classList.remove("hidden");
+  }
+}
+
+function hideKeyboardHome() {
+  if (keyboardContainerHome) {
+    keyboardContainerHome.classList.add("hidden");
+  }
+}
 
 function saveTransactions() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
@@ -44,7 +59,7 @@ function saveTransactions() {
 function loadTransactions() {
   const stored = localStorage.getItem("transactions");
   if (stored) {
-    transactions = JSON.parse(stored).map(t => ({
+    transactions = JSON.parse(stored).map((t) => ({
       ...t,
       category: t.category || "other"
     }));
@@ -175,15 +190,18 @@ transactionForm.addEventListener("submit", (e) => {
   addTransaction(name, amount, type, category);
   transactionModal.close();
   transactionForm.reset();
+  hideKeyboardHome();
 });
 
 addTransactionBtn.addEventListener("click", () => {
   transactionModal.showModal();
   transactionNameInput.focus();
+  showKeyboardHome();
 });
 
 closeModalBtn.addEventListener("click", () => {
   transactionModal.close();
+  hideKeyboardHome();
 });
 
 openFullListBtn.addEventListener("click", () => {
@@ -198,7 +216,26 @@ closeFullListBtn.addEventListener("click", () => {
 confirmDeleteBtn.addEventListener("click", confirmDeleteTransaction);
 cancelDeleteBtn.addEventListener("click", closeDeleteModal);
 
-/* ===== INIT ===== */
+homeTypingFields.forEach((field) => {
+  field.addEventListener("focus", showKeyboardHome);
+  field.addEventListener("click", showKeyboardHome);
+});
+
+transactionModal.addEventListener("click", (event) => {
+  const rect = transactionModal.getBoundingClientRect();
+  const clickedInside =
+    event.clientX >= rect.left &&
+    event.clientX <= rect.right &&
+    event.clientY >= rect.top &&
+    event.clientY <= rect.bottom;
+
+  if (!clickedInside) {
+    transactionModal.close();
+    hideKeyboardHome();
+  }
+});
+
+
 loadTransactions();
 renderTransactions();
 renderFullList();
