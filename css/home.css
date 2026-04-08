@@ -172,7 +172,6 @@ body {
   background: #457f51;
 }
 
-/* ===== MODALS ===== */
 #transaction_modal,
 #full_list,
 #delete_confirm_modal {
@@ -200,7 +199,6 @@ body {
   margin: 0 0 14px;
 }
 
-/* ===== FORM ===== */
 #transaction_form {
   display: flex;
   flex-direction: column;
@@ -232,7 +230,6 @@ body {
   font-size: 18px;
 }
 
-/* ===== KEYBOARD ===== */
 .home-keyboard-container {
   margin-top: 14px;
   display: flex;
@@ -248,7 +245,6 @@ body {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
 }
 
-/* ===== BUTTONS ===== */
 .modal_buttons {
   display: flex;
   gap: 10px;
@@ -278,6 +274,7 @@ body {
   max-height: 50vh;
   overflow-y: auto;
   margin-bottom: 16px;
+  font-size: 25px;
 }
 
 .full_transaction_item {
