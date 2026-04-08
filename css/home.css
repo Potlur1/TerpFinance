@@ -171,6 +171,7 @@ body {
 .add_transaction_btn:hover {
   background: #457f51;
 }
+
 /* ===== MODALS ===== */
 #transaction_modal,
 #full_list,
@@ -178,10 +179,9 @@ body {
   border: none;
   border-radius: 20px;
   padding: 16px;
-  width: min(95vw, 550px); /* 🔥 wider so dropdown fits */
+  width: min(95vw, 550px);
   max-height: 80vh;
   overflow-y: auto;
-
   position: fixed;
   top: 8vh;
   left: 50%;
@@ -195,15 +195,19 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+#transaction_modal h2 {
+  font-size: 34px;
+  margin: 0 0 14px;
+}
+
 /* ===== FORM ===== */
 #transaction_form {
   display: flex;
-  flex-direction: column; /* 🔥 stacked now */
+  flex-direction: column;
   gap: 10px;
   width: 100%;
 }
 
-/* inputs + selects */
 #transaction_form input,
 #transaction_form select {
   width: 100%;
@@ -212,23 +216,36 @@ body {
   box-sizing: border-box;
 }
 
-/* inputs */
 #transaction_form input {
-  height: 50px;
-  font-size: 18px;
-  padding: 0 10px;
+  height: 60px;
+  font-size: 22px;
+  padding: 0 14px;
 }
 
-/* selects */
 #transaction_form select {
-  height: 42px;
-  font-size: 16px;
-  padding: 0 8px;
+  height: 54px;
+  font-size: 20px;
+  padding: 0 12px;
 }
 
-/* dropdown options */
 #transaction_form select option {
-  font-size: 14px;
+  font-size: 18px;
+}
+
+/* ===== KEYBOARD ===== */
+.home-keyboard-container {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-keyboard-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
 }
 
 /* ===== BUTTONS ===== */
@@ -240,8 +257,8 @@ body {
 
 .modal_buttons button {
   flex: 1;
-  padding: 12px;
-  font-size: 16px;
+  padding: 14px;
+  font-size: 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -384,4 +401,8 @@ body {
 .icon {
   width: 60px;
   height: 60px;
+}
+
+.hidden {
+  display: none !important;
 }
