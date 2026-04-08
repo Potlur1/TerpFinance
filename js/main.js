@@ -218,6 +218,9 @@ const mainBudgetPercentTextEl = document.getElementById("mainBudgetPercentText")
 const keyboardContainer = document.getElementById("keyboardContainer");
 const budgetInputs = document.querySelectorAll("#budgetForm input, #budgetForm select");
 
+const keyboardContainerProfile = document.getElementById("keyboardContainerProfile");
+const profileInputs = document.querySelectorAll(".preset-content input, .preset-content select");
+
 let mainBudget = {
   type: "main",
   name: "Weekly Essentials",
@@ -267,7 +270,21 @@ function hideKeyboard() {
   }
 }
 
+function showKeyboardProfile() {
+  if (keyboardContainerProfile) {
+    keyboardContainerProfile.classList.remove("hidden");
+  }
+}
+
+function hideKeyboardProfile() {
+  if (keyboardContainerProfile) {
+    keyboardContainerProfile.classList.add("hidden");
+  }
+}
+
 function renderMainBudget() {
+  if (!mainBudgetNameEl) return;
+
   const remaining = Math.max(mainBudget.target - mainBudget.current, 0);
   const percentRemaining = mainBudget.target > 0
     ? Math.round((remaining / mainBudget.target) * 100)
@@ -282,6 +299,8 @@ function renderMainBudget() {
 }
 
 function renderBudgets() {
+  if (!shortTermBudgetList || !longTermBudgetList) return;
+
   shortTermBudgetList.innerHTML = "";
   longTermBudgetList.innerHTML = "";
 
@@ -400,11 +419,13 @@ function createBudgetCard(budget, index) {
 }
 
 function openModal(isEdit = false) {
+  if (!budgetModal || !modalTitle) return;
   budgetModal.classList.remove("hidden");
   modalTitle.textContent = isEdit ? "Edit Budget" : "Add Budget";
 }
 
 function closeModal() {
+  if (!budgetModal || !budgetForm) return;
   budgetModal.classList.add("hidden");
   budgetForm.reset();
   modalTitle.textContent = "Add Budget";
@@ -418,6 +439,8 @@ function closeModal() {
 }
 
 function updateBudgetTypeFields() {
+  if (!budgetType) return;
+
   if (budgetType.value === "long") {
     shortTermFields.classList.add("hidden");
     longTermFields.classList.remove("hidden");
@@ -484,67 +507,70 @@ function deleteBudget(index) {
   renderBudgets();
 }
 
-budgetForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (budgetForm) {
+  budgetForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const type = budgetType.value;
-  const name = budgetName.value.trim();
-  const category = budgetCategory.value.trim();
-  const target = Number(targetAmount.value);
-  const current = Number(currentAmount.value);
+    const type = budgetType.value;
+    const name = budgetName.value.trim();
+    const category = budgetCategory.value.trim();
+    const target = Number(targetAmount.value);
+    const current = Number(currentAmount.value);
 
-  if (!type || !name || !category || Number.isNaN(target) || Number.isNaN(current)) {
-    return;
-  }
+    if (!type || !name || !category || Number.isNaN(target) || Number.isNaN(current)) {
+      return;
+    }
 
-  if (editingMainBudget.value === "true" || type === "main") {
-    mainBudget = {
-      type: "main",
+    if (editingMainBudget.value === "true" || type === "main") {
+      mainBudget = {
+        type: "main",
+        name,
+        category,
+        target,
+        current,
+        dateLabel: "this week",
+        subtitle: mainBudgetSubtitleInput.value.trim() || `Stay under your $${target} weekly budget`
+      };
+
+      renderMainBudget();
+      closeModal();
+      return;
+    }
+
+    let dateLabel = "";
+
+    if (type === "short") {
+      dateLabel = endDate.value.trim();
+    } else {
+      dateLabel = milestoneDate.value.trim();
+    }
+
+    const budgetData = {
+      type,
       name,
       category,
       target,
       current,
-      dateLabel: "this week",
-      subtitle: mainBudgetSubtitleInput.value.trim() || `Stay under your $${target} weekly budget`
+      dateLabel
     };
 
-    renderMainBudget();
+    if (editIndex.value !== "") {
+      budgets[Number(editIndex.value)] = budgetData;
+    } else {
+      budgets.push(budgetData);
+    }
+
+    renderBudgets();
     closeModal();
-    return;
-  }
-
-  let dateLabel = "";
-
-  if (type === "short") {
-    dateLabel = endDate.value.trim();
-  } else {
-    dateLabel = milestoneDate.value.trim();
-  }
-
-  const budgetData = {
-    type,
-    name,
-    category,
-    target,
-    current,
-    dateLabel
-  };
-
-  if (editIndex.value !== "") {
-    budgets[Number(editIndex.value)] = budgetData;
-  } else {
-    budgets.push(budgetData);
-  }
-
-  renderBudgets();
-  closeModal();
-});
+  });
+}
 
 function togglePreset(button) {
   const content = button.nextElementSibling;
 
   if (content.style.display === "block") {
     content.style.display = "none";
+    hideKeyboardProfile();
   } else {
     content.style.display = "block";
   }
@@ -598,6 +624,22 @@ budgetInputs.forEach((field) => {
   field.addEventListener("click", showKeyboard);
 });
 
+profileInputs.forEach((field) => {
+  field.addEventListener("focus", showKeyboardProfile);
+  field.addEventListener("click", showKeyboardProfile);
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    keyboardContainerProfile &&
+    !event.target.closest(".preset-content") &&
+    !event.target.closest(".keyboard-container") &&
+    !event.target.closest(".preset-header")
+  ) {
+    hideKeyboardProfile();
+  }
+});
+
 function setupBudgetSectionToggles() {
   const collapsibleHeaders = document.querySelectorAll(".collapsible-header");
 
@@ -622,7 +664,9 @@ function setupBudgetSectionToggles() {
   });
 }
 
-closeModal();
-renderMainBudget();
-renderBudgets();
-setupBudgetSectionToggles();
+if (budgetModal && budgetForm) {
+  closeModal();
+  renderMainBudget();
+  renderBudgets();
+  setupBudgetSectionToggles();
+}
